@@ -72,6 +72,10 @@ const Services = styled(About)`
   p {
     width: 70%;
     padding: 2rem 0rem 4rem 0rem;
+
+    @media (max-width: 1300px) {
+      width: 100%;
+    }
   }
 `;
 
@@ -81,11 +85,20 @@ const Cards = styled.div`
 
   @media (max-width: 1300px) {
     justify-content: center;
+    flex-wrap: nowrap;
+    flex-direction: column;
+    align-items: center;
   }
 `;
 
 const Card = styled.div`
   flex-basis: 20rem;
+
+  @media (max-width: 1300px) {
+    align-self: center;
+
+    flex-basis: 0rem;
+  }
   .icon {
     align-items: center;
     display: flex;
