@@ -5,10 +5,22 @@ import teamwork from "../img/teamwork.svg";
 import home2 from "../img/home2.png";
 import { About, Description, Image, Hide } from "../styles.js";
 import styled from "styled-components";
+import { useInView } from "react-intersection-observer";
+import { useAnimationControls } from "framer-motion";
+import { scrollReveal } from "../animation";
+import { useEffect } from "react";
+import { useScroll } from "./useScroll";
 
 const ServicesSection = () => {
+  const [element, controls] = useScroll();
+
   return (
-    <Services>
+    <Services
+      variants={scrollReveal}
+      animate={controls}
+      initial="hidden"
+      ref={element}
+    >
       <Description>
         <h2>
           High <span>quality</span> services

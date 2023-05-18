@@ -3,8 +3,10 @@ import racer from "../img/theracer-small.png";
 import goodtimes from "../img/goodtimes-small.png";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
-
+import { useScroll } from "../components/useScroll";
 import { motion } from "framer-motion";
+import ScrollTop from "../components/ScrollTop";
+
 import {
   fade,
   photoAnim,
@@ -15,6 +17,9 @@ import {
 } from "../animation";
 
 const OurWork = () => {
+  const [element, controls] = useScroll();
+  const [element2, controls2] = useScroll();
+
   return (
     <Work exit="exit" variants={pageAnimation} initial="hidden" animate="show">
       <motion.div variants={sliderContainer}>
@@ -26,26 +31,32 @@ const OurWork = () => {
       <Movie>
         <motion.h2 variants={fade}>The Athlete</motion.h2>
         <motion.div variants={lineAnimation} className="line"></motion.div>
-        <Link>
+        <Link to="/work/the-athlete">
           <Hide>
             <motion.img variants={photoAnim} src={athlete} alt="" />
           </Hide>
         </Link>
       </Movie>
-      <Movie>
+      <Movie ref={element} variants={fade} animate={controls} initial="hidden">
         <h2>The racer</h2>
         <div className="line"></div>
-        <Link>
+        <Link to="/work/the-racer">
           <img src={racer} alt="" />
         </Link>
       </Movie>
-      <Movie>
+      <Movie
+        ref={element2}
+        variants={fade}
+        animate={controls2}
+        initial="hidden"
+      >
         <h2>Good times</h2>
         <div className="line"></div>
-        <Link>
+        <Link to="/work/good-times">
           <img src={goodtimes} alt="" />
         </Link>
       </Movie>
+      <ScrollTop></ScrollTop>
     </Work>
   );
 };
@@ -87,7 +98,7 @@ const Frame1 = styled(motion.div)`
   width: 100%;
   height: 100vh;
   background: #525352;
-  z-index: 2;
+  z-index: 5;
 `;
 const Frame2 = styled(Frame1)`
   background: #424242;

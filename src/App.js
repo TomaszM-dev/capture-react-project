@@ -7,6 +7,7 @@ import React from "react";
 import MovieDetail from "./pages/MovieDetail";
 import { Routes, Route, useLocation } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
+import ScrollTop from "./components/ScrollTop";
 
 function App() {
   const location = useLocation();
@@ -14,6 +15,7 @@ function App() {
   return (
     <div className="App">
       <GlobalStyle />
+
       <Nav />
 
       <AnimatePresence mode="wait">

@@ -3,56 +3,57 @@ import styled from "styled-components";
 import { useState } from "react";
 import Toggle from "./Toggle.js";
 import { LayoutGroup } from "framer-motion";
+import { useScroll } from "./useScroll.js";
+import { scrollReveal } from "../animation";
 
 const FaqSection = () => {
+  const [element, controls] = useScroll();
+
   return (
-    <Faq>
+    <Faq
+      variants={scrollReveal}
+      animate={controls}
+      initial="hidden"
+      ref={element}
+    >
       <h2>
         Any questions <span>FAQ</span>
       </h2>
       <LayoutGroup>
         <Toggle title="How do i start">
-          <div className="question">
-            <div className="answer">
-              <p>Lorem ipsum dolor sit amet.</p>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas,
-                veniam?
-              </p>
-            </div>
+          <div className="answer">
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas,
+              veniam?
+            </p>
           </div>
         </Toggle>
         <Toggle title="Different Payement Methods">
-          <div className="question">
-            <div className="answer">
-              <p>Lorem ipsum dolor sit amet.</p>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas,
-                veniam?
-              </p>
-            </div>
+          <div className="answer">
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas,
+              veniam?
+            </p>
           </div>
         </Toggle>
         <Toggle title="Daily squadule">
-          <div className="question">
-            <div className="answer">
-              <p>Lorem ipsum dolor sit amet.</p>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas,
-                veniam?
-              </p>
-            </div>
+          <div className="answer">
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas,
+              veniam?
+            </p>
           </div>
         </Toggle>
         <Toggle title="Why us?">
-          <div className="question">
-            <div className="answer">
-              <p>Lorem ipsum dolor sit amet.</p>
-              <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas,
-                veniam?
-              </p>
-            </div>
+          <div className="answer">
+            <p>Lorem ipsum dolor sit amet.</p>
+            <p>
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quas,
+              veniam?
+            </p>
           </div>
         </Toggle>
       </LayoutGroup>
@@ -81,6 +82,7 @@ const Faq = styled(About)`
   .question {
     padding: 2rem 0rem;
     cursor: pointer;
+    backface-visibility: hidden;
   }
 
   .answer {
