@@ -4,14 +4,32 @@ import goodtimes from "../img/goodtimes-small.png";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+import { motion } from "framer-motion";
+import {
+  fade,
+  photoAnim,
+  pageAnimation,
+  lineAnimation,
+  slider,
+  sliderContainer,
+} from "../animation";
+
 const OurWork = () => {
   return (
-    <Work>
+    <Work exit="exit" variants={pageAnimation} initial="hidden" animate="show">
+      <motion.div variants={sliderContainer}>
+        <Frame1 variants={slider}></Frame1>
+        <Frame2 variants={slider}></Frame2>
+        <Frame3 variants={slider}></Frame3>
+        <Frame4 variants={slider}></Frame4>
+      </motion.div>
       <Movie>
-        <h2>The Athlete</h2>
-        <div className="line"></div>
+        <motion.h2 variants={fade}>The Athlete</motion.h2>
+        <motion.div variants={lineAnimation} className="line"></motion.div>
         <Link>
-          <img src={athlete} alt="" />
+          <Hide>
+            <motion.img variants={photoAnim} src={athlete} alt="" />
+          </Hide>
         </Link>
       </Movie>
       <Movie>
@@ -32,7 +50,11 @@ const OurWork = () => {
   );
 };
 
-const Work = styled.div`
+const Hide = styled.div`
+  overflow: hidden;
+`;
+
+const Work = styled(motion.div)`
   min-height: 100vh;
   overflow: hidden;
   padding: 5rem 10rem;
@@ -42,12 +64,12 @@ const Work = styled.div`
   }
 `;
 
-const Movie = styled.div`
+const Movie = styled(motion.div)`
   padding-bottom: 10rem;
 
   .line {
     height: 0.5rem;
-    background: #cccccc;
+    background: #23d997;
     margin-bottom: 3rem;
   }
 
@@ -56,6 +78,25 @@ const Movie = styled.div`
     height: 70vh;
     object-fit: cover;
   }
+`;
+
+const Frame1 = styled(motion.div)`
+  position: fixed;
+  left: 0;
+  top: 10%;
+  width: 100%;
+  height: 100vh;
+  background: #525352;
+  z-index: 2;
+`;
+const Frame2 = styled(Frame1)`
+  background: #424242;
+`;
+const Frame3 = styled(Frame1)`
+  background: #3a3a3a;
+`;
+const Frame4 = styled(Frame1)`
+  background: #313030;
 `;
 
 export default OurWork;
