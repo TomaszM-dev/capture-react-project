@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App">
       <GlobalStyle />
-
+      <ScrollTop></ScrollTop>
       <Nav />
 
       <AnimatePresence mode="wait">
